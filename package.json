@@ -4,7 +4,11 @@
   "description": "Landing page for natours project",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+    "concat:css": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' -c css/style.concat.css -o css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,11 @@
   },
   "homepage": "https://github.com/karnbibek/CSS-practise-projects#readme",
   "dependencies": {
-    "node-sass": "^5.0.0"
+    "autoprefixer": "^10.2.4",
+    "node-sass": "^5.0.0",
+    "postcss-cli-simple": "^3.1.0"
+  },
+  "devDependencies": {
+    "postcss": "^8.2.4"
   }
 }
